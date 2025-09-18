@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weekend Road‑Trip Planner</title>
   <style>
+    /* Base layout */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -13,38 +14,82 @@
       color: #333;
       line-height: 1.6;
     }
-    header {
-      background-color: #2c3e50;
+    /* Hero header with background image */
+    header.hero {
+      position: relative;
+      background-image: url('banner.png');
+      background-size: cover;
+      background-position: center;
       color: #fff;
-      padding: 20px;
       text-align: center;
+      padding: 100px 20px 80px;
     }
+    header.hero::after {
+      /* semi‑transparent overlay for readability */
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+    header.hero h1,
+    header.hero p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+    }
+    header.hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header.hero p {
+      font-size: 1.2rem;
+    }
+    /* Navigation */
     nav {
       background-color: #34495e;
       color: #fff;
       padding: 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     nav a {
       color: #fff;
-      margin: 0 10px;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
+      transition: opacity 0.2s;
     }
+    nav a:hover {
+      opacity: 0.7;
+    }
+    /* Main content wrapper */
     main {
       padding: 20px;
-      max-width: 900px;
-      margin: auto;
+      max-width: 1000px;
+      margin: 0 auto;
       background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
     h2 {
       color: #2c3e50;
       border-bottom: 2px solid #e2e2e2;
       padding-bottom: 5px;
+      margin-top: 40px;
     }
+    h3 {
+      margin-top: 20px;
+      color: #34495e;
+    }
+    /* Tables */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -52,29 +97,45 @@
     }
     table th, table td {
       border: 1px solid #ddd;
-      padding: 8px;
+      padding: 12px;
     }
     table th {
       background-color: #2c3e50;
       color: #fff;
     }
+    table tr:nth-child(even) td {
+      background-color: #f9f9f9;
+    }
+    /* Lists */
     ul {
       list-style-type: disc;
       margin-left: 20px;
     }
+    ul li + li {
+      margin-top: 5px;
+    }
+    /* Footnotes */
+    .citation {
+      font-size: 0.8em;
+    }
+    ol.citation {
+      margin-left: 20px;
+    }
+    ol.citation li {
+      margin-bottom: 4px;
+    }
+    /* Footer */
     footer {
       background-color: #2c3e50;
       color: #fff;
       text-align: center;
-      padding: 10px;
-    }
-    .citation {
-      font-size: 0.8em;
+      padding: 15px 10px;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <header>
+  <header id="top" class="hero">
     <h1>Weekend Road‑Trip Planner</h1>
     <p>A road‑trip itinerary from New Jersey to Philadelphia and Washington&nbsp;D.C., with dining recommendations</p>
   </header>
@@ -95,11 +156,11 @@
         </thead>
         <tbody>
           <tr><td><strong>8 AM</strong></td><td>Pick up rental car at 15 Mall Drive W in Jersey City.</td></tr>
-          <tr><td><strong>8:30 – 10 AM</strong></td><td>Drive to Philadelphia (≈ 1 hr 36 min). Park near Independence National Historical Park.</td></tr>
-          <tr><td><strong>10 AM – 12 PM</strong></td><td>Visit Liberty Bell Center (daily 9 AM – 5 PM【925263634005437†L229-L234】) and tour Independence Hall (guided tours start at 10:40 AM【181240063943545†L744-L751】). Reserve tickets in advance.</td></tr>
+          <tr><td><strong>8:30 – 10 AM</strong></td><td>Drive to Philadelphia (≈ 1 hr 36 min).<sup><a href="#cite20">[20]</a></sup> Park near Independence National Historical Park.</td></tr>
+          <tr><td><strong>10 AM – 12 PM</strong></td><td>Visit the Liberty Bell Center and Independence Hall; reserve tickets in advance.<sup><a href="#cite1">[1]</a></sup><sup><a href="#cite2">[2]</a></sup></td></tr>
           <tr><td><strong>12 – 1:30 PM</strong></td><td>Lunch in Philadelphia (see dining suggestions below).</td></tr>
           <tr><td><strong>1:30 – 3:30 PM</strong></td><td>Optional sightseeing: Congress Hall, Old City Hall or Philadelphia Museum of Art.</td></tr>
-          <tr><td><strong>3:30 – 6 PM</strong></td><td>Drive to Washington D.C. (≈ 2 hr 30 min【400923969450638†L5-L9】) and check into hotel.</td></tr>
+          <tr><td><strong>3:30 – 6 PM</strong></td><td>Drive to Washington D.C. (≈ 2 hr 30 min).<sup><a href="#cite20">[20]</a></sup> Check into hotel.</td></tr>
           <tr><td><strong>7 – 9 PM</strong></td><td>Dinner in D.C. (see dining suggestions below).</td></tr>
         </tbody>
       </table>
@@ -110,8 +171,8 @@
         </thead>
         <tbody>
           <tr><td><strong>Morning</strong></td><td>Breakfast or brunch in Washington D.C. (see dining section).</td></tr>
-          <tr><td><strong>10 AM – 4 PM</strong></td><td>Visit Smithsonian museums such as the National Museum of African American History & Culture (Tue–Sun 10 AM – 5:30 PM【504818814757397†L219-L229】) and the National Air and Space Museum (10 AM – 5:30 PM【532778326276699†L166-L167】). Obtain timed‑entry passes where required.</td></tr>
-          <tr><td><strong>Late afternoon</strong></td><td>Stroll the National Mall; stop by the Washington Monument (open daily 9 AM – 5 PM【252163880217446†L175-L179】) and Lincoln Memorial (open 24 hours【688525656490709†L204-L206】).</td></tr>
+          <tr><td><strong>10 AM – 4 PM</strong></td><td>Visit Smithsonian museums such as the National Museum of African American History & Culture and the National Air and Space Museum; timed‑entry passes are required for some exhibits.<sup><a href="#cite16">[16]</a></sup></td></tr>
+          <tr><td><strong>Late afternoon</strong></td><td>Stroll the National Mall and stop by the Washington Monument and Lincoln Memorial.<sup><a href="#cite17">[17]</a></sup></td></tr>
           <tr><td><strong>Evening</strong></td><td>Dine at one of D.C.’s iconic restaurants and optionally enjoy an illuminated monuments tour.</td></tr>
         </tbody>
       </table>
@@ -121,12 +182,12 @@
           <tr><th>Time</th><th>Activity</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>Morning</strong></td><td>Brunch and a visit to the National Gallery of Art (open daily 10 AM – 5 PM【869034942747319†L26-L27】).</td></tr>
-          <tr><td><strong>Midday</strong></td><td>Explore Capitol Hill’s Eastern Market (outdoor market Sun 9 AM – 4 PM【476037548353652†L107-L113】).</td></tr>
-          <tr><td><strong>Afternoon</strong></td><td>Drive back to Brooklyn (≈ 4 hr 1 min【617602960728280†L5-L9】).</td></tr>
+          <tr><td><strong>Morning</strong></td><td>Brunch and a visit to the National Gallery of Art.<sup><a href="#cite18">[18]</a></sup></td></tr>
+          <tr><td><strong>Midday</strong></td><td>Explore Capitol Hill’s Eastern Market.<sup><a href="#cite19">[19]</a></sup></td></tr>
+          <tr><td><strong>Afternoon</strong></td><td>Drive back to Brooklyn (≈ 4 hr 1 min).<sup><a href="#cite20">[20]</a></sup></td></tr>
         </tbody>
       </table>
-      <p style="margin-top: 10px;"><a href="#">Back to top</a></p>
+      <p style="margin-top: 10px;"><a href="#top">Back to top</a></p>
     </section>
 
     <section id="philadelphia">
@@ -175,26 +236,26 @@
       <h2>Footnotes & Sources</h2>
       <p class="citation">This website compiles hours and descriptions from official restaurant websites, the National Park Service and other authoritative sources. Citations in the text refer to the following sources:</p>
       <ol class="citation">
-        <li>Liberty Bell Center hours【925263634005437†L229-L234】.</li>
-        <li>Independence Hall tour times【181240063943545†L744-L751】.</li>
-        <li>Reading Terminal Market hours【886073634444175†L181-L183】.</li>
-        <li>Pat’s King of Steaks (open 24/7)【599480514432855†L159-L169】.</li>
-        <li>Café La Maude hours (official website)【110372502358022†screenshot】.</li>
-        <li>Middle Child hours【203906859337778†L30-L35】.</li>
-        <li>Dutch Eating Place hours【670382631424857†L122-L132】.</li>
-        <li>Zahav dinner hours【106771744205278†L130-L135】.</li>
-        <li>Vernick Food & Drink hours【614558337439663†L66-L78】.</li>
-        <li>Suraya lunch and dinner hours【496243820181028†L22-L31】.</li>
-        <li>Founding Farmers hours【212854330301417†L132-L150】.</li>
-        <li>Le Diplomate hours【311087771589824†L129-L137】.</li>
-        <li>Old Ebbitt Grill hours【826374088153522†L84-L110】.</li>
-        <li>The Hamilton hours【736105731987737†L65-L74】.</li>
-        <li>Blue Duck Tavern hours for breakfast, lunch, brunch and dinner【112144130586795†L58-L69】.</li>
-        <li>Smithsonian museum hours and timed‑entry requirements【504818814757397†L219-L229】【532778326276699†L166-L167】.</li>
-        <li>Washington Monument and Lincoln Memorial hours【252163880217446†L175-L179】【688525656490709†L204-L206】.</li>
-        <li>National Gallery of Art hours【869034942747319†L26-L27】.</li>
-        <li>Eastern Market hours【476037548353652†L107-L113】.</li>
-        <li>Driving time estimates between cities【400923969450638†L5-L9】【617602960728280†L5-L9】.</li>
+        <li id="cite1">Liberty Bell Center hours【925263634005437†L229-L234】.</li>
+        <li id="cite2">Independence Hall tour times【181240063943545†L744-L751】.</li>
+        <li id="cite3">Reading Terminal Market hours【886073634444175†L181-L183】.</li>
+        <li id="cite4">Pat’s King of Steaks (open 24/7)【599480514432855†L159-L169】.</li>
+        <li id="cite5">Café La Maude hours (official website)【110372502358022†screenshot】.</li>
+        <li id="cite6">Middle Child hours【203906859337778†L30-L35】.</li>
+        <li id="cite7">Dutch Eating Place hours【670382631424857†L122-L132】.</li>
+        <li id="cite8">Zahav dinner hours【106771744205278†L130-L135】.</li>
+        <li id="cite9">Vernick Food & Drink hours【614558337439663†L66-L78】.</li>
+        <li id="cite10">Suraya lunch and dinner hours【496243820181028†L22-L31】.</li>
+        <li id="cite11">Founding Farmers hours【212854330301417†L132-L150】.</li>
+        <li id="cite12">Le Diplomate hours【311087771589824†L129-L137】.</li>
+        <li id="cite13">Old Ebbitt Grill hours【826374088153522†L84-L110】.</li>
+        <li id="cite14">The Hamilton hours【736105731987737†L65-L74】.</li>
+        <li id="cite15">Blue Duck Tavern hours for breakfast, lunch, brunch and dinner【112144130586795†L58-L69】.</li>
+        <li id="cite16">Smithsonian museum hours and timed‑entry requirements【504818814757397†L219-L229】【532778326276699†L166-L167】.</li>
+        <li id="cite17">Washington Monument and Lincoln Memorial hours【252163880217446†L175-L179】【688525656490709†L204-L206】.</li>
+        <li id="cite18">National Gallery of Art hours【869034942747319†L26-L27】.</li>
+        <li id="cite19">Eastern Market hours【476037548353652†L107-L113】.</li>
+        <li id="cite20">Driving time estimates between cities【400923969450638†L5-L9】【617602960728280†L5-L9】.</li>
       </ol>
     </section>
   </main>
